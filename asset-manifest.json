@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/lazytyping/static/css/main.4daf6744.chunk.css",
+    "main.js": "/lazytyping/static/js/main.fc60780f.chunk.js",
+    "main.js.map": "/lazytyping/static/js/main.fc60780f.chunk.js.map",
+    "runtime-main.js": "/lazytyping/static/js/runtime-main.873c87a5.js",
+    "runtime-main.js.map": "/lazytyping/static/js/runtime-main.873c87a5.js.map",
+    "static/js/2.9acd8679.chunk.js": "/lazytyping/static/js/2.9acd8679.chunk.js",
+    "static/js/2.9acd8679.chunk.js.map": "/lazytyping/static/js/2.9acd8679.chunk.js.map",
+    "index.html": "/lazytyping/index.html",
+    "precache-manifest.148240295123e601a3264de581c9461e.js": "/lazytyping/precache-manifest.148240295123e601a3264de581c9461e.js",
+    "service-worker.js": "/lazytyping/service-worker.js",
+    "static/css/main.4daf6744.chunk.css.map": "/lazytyping/static/css/main.4daf6744.chunk.css.map",
+    "static/js/2.9acd8679.chunk.js.LICENSE": "/lazytyping/static/js/2.9acd8679.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.873c87a5.js",
+    "static/js/2.9acd8679.chunk.js",
+    "static/css/main.4daf6744.chunk.css",
+    "static/js/main.fc60780f.chunk.js"
+  ]
+}
