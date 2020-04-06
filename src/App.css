@@ -298,3 +298,21 @@ body{
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.highlight{
+  /* margin: 5px 2px 5px 0; */
+  animation: highlightOnce 0.1s;
+}
+
+@keyframes highlightOnce{
+
+  0% {
+    border: solid #cccccc;
+  }
+
+  100% {
+    background-color: #cccccc;
+    border: solid #cccccc;
+  }
+
+}
