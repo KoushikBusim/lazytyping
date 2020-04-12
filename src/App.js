@@ -12,6 +12,9 @@ import DisplayKeyboard from './DisplayKeyboard';
  * - TODO
  * --- STATUS 
  * 
+ * dark mode switch
+ * anagrams (words based on keys in different rows)
+ * 
  * --record key strokes, detect which key is pressed
  * 
  * key strokes recorded.
@@ -40,6 +43,14 @@ import DisplayKeyboard from './DisplayKeyboard';
  * -dynamic keyboard display based on platform
  */
 
+let lessons = {
+  "sample": ["ine","eletten","lier","eren","letter","lier","nient","rel","teet","letten","inent","ter","tell","treet","ener","ree","ten","lette","ner","nient","tree","ree","nient","tree"],
+  "homerow": ["flags","flaks","flash","flask","glads","dags","dash","Fahd","fads","fags","fash","flag","flak","gads","gals","gash","glad","Hals","hags","half","jags","lads","lags","lakh","lash","salk","shad","shag","slad","slag","flags"],
+  "toprow": ["equity","Pequot","Pietro","Poiret","Portie","piquet","poetry","pouter","protei","puerto","purity","pyrite","quoter","qwerty","torque","troupe","equip","erupt","outer","outre","Perot","Piotr","Porty","Pyotr","petri","petro","pewit","piety"],
+  "bottomrow": ["zigzag","zebra","zero","zipper","zinnia","zoo","zithe","zan","zala","zalad","zajar","zaddy","zamono","zakk","zah","zomo","zanby","zabba","zamna","zaxy","zamn"]
+}
+let lesson_names = Object.keys(lessons)
+
 class App extends React.Component {
   state = { 
     "keys": ["alphabetic","shift+a","shift+b","shift+c","shift+d","shift+e","shift+f","shift+g","shift+h","shift+i","shift+j","shift+k","shift+l","shift+m","shift+n","shift+o","shift+p","shift+q","shift+r","shift+s","shift+t","shift+u","shift+v","shift+w","shift+x","shift+y","shift+z","space","backspace","enter","shift",";",",","."],
@@ -49,7 +60,8 @@ class App extends React.Component {
     "error_indexes": [],
     "current_index": 0,
     "finished": false,
-    "pressed_key_code": ""
+    "pressed_key_code": "",
+    "current_lesson": 1
   }
   getPractiseKeys = () => {
     let practise_keys = []
