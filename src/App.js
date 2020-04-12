@@ -43,13 +43,19 @@ import DisplayKeyboard from './DisplayKeyboard';
  * -dynamic keyboard display based on platform
  */
 
-let lessons = {
-  "sample": ["ine","eletten","lier","eren","letter","lier","nient","rel","teet","letten","inent","ter","tell","treet","ener","ree","ten","lette","ner","nient","tree","ree","nient","tree"],
-  "homerow": ["flags","flaks","flash","flask","glads","dags","dash","Fahd","fads","fags","fash","flag","flak","gads","gals","gash","glad","Hals","hags","half","jags","lads","lags","lakh","lash","salk","shad","shag","slad","slag","flags"],
-  "toprow": ["equity","Pequot","Pietro","Poiret","Portie","piquet","poetry","pouter","protei","puerto","purity","pyrite","quoter","qwerty","torque","troupe","equip","erupt","outer","outre","Perot","Piotr","Porty","Pyotr","petri","petro","pewit","piety"],
-  "bottomrow": ["zigzag","zebra","zero","zipper","zinnia","zoo","zithe","zan","zala","zalad","zajar","zaddy","zamono","zakk","zah","zomo","zanby","zabba","zamna","zaxy","zamn"]
+var lessons = {
+  "homerow": ["flags","flaks","glads","dags","dash","fads","fags","fash","flag","gads","gals","gash","glad","hags","half","jags","lads","lags","lakh","lash","salk","shad","slad","slag"],
+  "toprow": ["equity","pietro","portie","pouter","protei","purity","pyrite","quoter","qwerty","torque","troupe","equip","erupt","outer","outre","perot","porty","pyotr","petri","petro"],
+  "bottomrow": ["zigzag","zebra","zero","zipper","zinnia","zoo","zithe","zan","zala","zalad","zajar","zaddy","zamono","zakk","zah","zomo","zanby","zabba","zamna","zaxy","zamn"],
+  "general": ["ine","eletten","lier","eren","letter","lier","nient","rel","teet","letten","inent","ter","tell","treet","ener","ree","ten","lette","ner","nient","tree","ree","nient","tree"]
 }
-let lesson_names = Object.keys(lessons)
+var lessons_test = {
+  "homerow": ["flags","flash"],
+  "toprow": ["equity","Pietro"],
+  "bottomrow": ["zebra","zero","zipper"],
+  "general": ["ine","lier"]
+}
+var lesson_names = Object.keys(lessons)
 
 class App extends React.Component {
   state = { 
@@ -61,7 +67,7 @@ class App extends React.Component {
     "current_index": 0,
     "finished": false,
     "pressed_key_code": "",
-    "current_lesson": 1
+    "current_lesson_no": 0
   }
   getPractiseKeys = () => {
     let practise_keys = []
@@ -75,27 +81,35 @@ class App extends React.Component {
     console.log("practise_keys: ", practise_keys.join(", "))
     return practise_keys.join(", ")
   }
+
   render() { 
+    let lesson_no = this.state.current_lesson_no;
+    let lesson_name = lesson_names[lesson_no];
+    let lesson = lessons[lesson_name]
+  
+    // console.log("lesson:",lesson)
     if (this.state.finished){
-      return ( 
+      return (
         <div className="App">
-          <h2>Congratulations Lesson finished!</h2>
-          <p>Stats: {this.state.error_indexes.length} wrong key strokes </p>
-          <p>These keys needs more practise: {this.getPractiseKeys()} </p>
-        </div>
+          <h2>Congratulations! You have finished all the lessons.</h2>
+        </div> 
+        // add continue button - go to next lesson
+        // add practise more button - generate words based on wrong key strokes 
+        
+        // <div className="App">
+        //   <h2>Congratulations Lesson finished!</h2>
+        //   <p>Stats: {this.state.error_indexes.length} wrong key strokes </p>
+        //   <p>These keys needs more practise: {this.getPractiseKeys()} </p>
+        // </div>
       );
     }
     else{
       return ( 
         <div className="App">
-          {/* console.log(this.state.letters.length) 
-            console.log(key_mappings)*/
-            // console.log("error_indexes",this.state.error_indexes)
-          }
-          <h1>Pressed key: {this.state.pressed_key}</h1>
+          <p><b>Lesson name:</b> {lesson_name}, <b>Pressed key:</b> {this.state.pressed_key}</p>
           <div className="ContentBox">
             {
-              this.state.letters.split("").map((letter, index) => {
+              lesson.join(" ").split("").map((letter, index) => {
                 let letterStyle = "";
                 if(index === this.state.current_index){
                   letterStyle = "Current"
@@ -113,17 +127,37 @@ class App extends React.Component {
               handleKeys={this.state.keys}
               onKeyEvent={
                 (key, e) => {
-                  console.log(`do something upon keydown event of ${key}`);
+                  // console.log(`do something upon keydown event of ${key}`);
                   if(key !== "shift"){
-                    if(this.state.letters.split("")[this.state.current_index] === key_mappings[key]){
-                      if(this.state.current_index === this.state.letters.split("").length-1){
-                        console.log("finished")
-                        this.setState({ 
-                          finished: true
-                        })
+                    if(lesson.join(" ").split("")[this.state.current_index] === key_mappings[key]){ // right or wrong check
+                      if(this.state.current_index === lesson.join(" ").split("").length-1){ // last letter in lesson check
+                        console.log("lesson finished")
+                        // if (this.state.current_lesson_no === lesson_names.length-2){
+                        //   console.log("here1")
+                        //   this.setState({ 
+                        //     error_indexes: [],
+                        //     current_index: 0,
+                        //     pressed_key_code: ""
+                        //   })
+                        // }
+                        // else 
+                        if(this.state.current_lesson_no === lesson_names.length-1){
+                          console.log("here2")
+                          this.setState({ 
+                            finished: true
+                          })
+                        }
+                        else{
+                          console.log("here3")
+                          this.setState({ 
+                            error_indexes: [],
+                            current_index: 0,
+                            pressed_key_code: "",
+                            current_lesson_no: this.state.current_lesson_no + 1
+                          })
+                        }
                       }
                       else{
-                        console.log("not yet finished")
                         this.setState({ 
                           pressed_key: key_mappings[key],
                           current_index: this.state.current_index + 1
