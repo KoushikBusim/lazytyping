@@ -47,14 +47,14 @@ var lessons = {
   "homerow": ["flags","flaks","glads","dags","dash","fads","fags","fash","flag","gads","gals","gash","glad","hags","half","jags","lads","lags","lakh","lash","salk","shad","slad","slag"],
   "toprow": ["equity","pietro","portie","pouter","protei","purity","pyrite","quoter","qwerty","torque","troupe","equip","erupt","outer","outre","perot","porty","pyotr","petri","petro"],
   "bottomrow": ["zigzag","zebra","zero","zipper","zinnia","zoo","zithe","zan","zala","zalad","zajar","zaddy","zamono","zakk","zah","zomo","zanby","zabba","zamna","zaxy","zamn"],
-  "general": ["ine","eletten","lier","eren","letter","lier","nient","rel","teet","letten","inent","ter","tell","treet","ener","ree","ten","lette","ner","nient","tree","ree","nient","tree"]
+  "allrows": ["ine","eletten","lier","eren","letter","lier","nient","rel","teet","letten","inent","ter","tell","treet","ener","ree","ten","lette","ner","nient","tree","ree","nient","tree"]
 }
-var lessons_test = {
-  "homerow": ["flags","flash"],
-  "toprow": ["equity","Pietro"],
-  "bottomrow": ["zebra","zero","zipper"],
-  "general": ["ine","lier"]
-}
+// var lessons = {
+//   "homerow": ["flags","flash"],
+//   "toprow": ["equity","Pietro"],
+//   "bottomrow": ["zebra","zero","zipper"],
+//   "allrows": ["ine","lier"]
+// }
 var lesson_names = Object.keys(lessons)
 
 class App extends React.Component {
@@ -67,7 +67,8 @@ class App extends React.Component {
     "current_index": 0,
     "finished": false,
     "pressed_key_code": "",
-    "current_lesson_no": 0
+    "current_lesson_no": 0,
+    "lesson_running": false
   }
   getPractiseKeys = () => {
     let practise_keys = []
@@ -81,14 +82,29 @@ class App extends React.Component {
     console.log("practise_keys: ", practise_keys.join(", "))
     return practise_keys.join(", ")
   }
+  clickspan = (e) => {
+    e.preventDefault()
+    console.log(e.target, "click")
+    // alert('name');
+    this.setState({ 
+      lesson_running: true 
+    })
+  }
 
   render() { 
     let lesson_no = this.state.current_lesson_no;
     let lesson_name = lesson_names[lesson_no];
     let lesson = lessons[lesson_name]
   
+    if(this.state.lesson_running === false){
+      return (
+        <div className="App">
+          <p><b>Lesson name:</b> {lesson_name}, <span style={{'color':'blue','text-decoration': 'underline','cursor':'pointer'}} onClick={ e => this.clickspan(e)} >start lesson</span>.</p>
+          <DisplayKeyboard lesson_name={lesson_name} pressed_key = {this.state.pressed_key} key_code = {this.pressed_key_code} lesson_running = {this.state.lesson_running}/>
+        </div>);
+    }
     // console.log("lesson:",lesson)
-    if (this.state.finished){
+    else if (this.state.finished){
       return (
         <div className="App">
           <h2>Congratulations! You have finished all the lessons.</h2>
@@ -106,7 +122,7 @@ class App extends React.Component {
     else{
       return ( 
         <div className="App">
-          <p><b>Lesson name:</b> {lesson_name}, <b>Pressed key:</b> {this.state.pressed_key}</p>
+          <p><b>Lesson name:</b> {lesson_name}</p>
           <div className="ContentBox">
             {
               lesson.join(" ").split("").map((letter, index) => {
@@ -132,15 +148,6 @@ class App extends React.Component {
                     if(lesson.join(" ").split("")[this.state.current_index] === key_mappings[key]){ // right or wrong check
                       if(this.state.current_index === lesson.join(" ").split("").length-1){ // last letter in lesson check
                         console.log("lesson finished")
-                        // if (this.state.current_lesson_no === lesson_names.length-2){
-                        //   console.log("here1")
-                        //   this.setState({ 
-                        //     error_indexes: [],
-                        //     current_index: 0,
-                        //     pressed_key_code: ""
-                        //   })
-                        // }
-                        // else 
                         if(this.state.current_lesson_no === lesson_names.length-1){
                           console.log("here2")
                           this.setState({ 
@@ -153,7 +160,8 @@ class App extends React.Component {
                             error_indexes: [],
                             current_index: 0,
                             pressed_key_code: "",
-                            current_lesson_no: this.state.current_lesson_no + 1
+                            current_lesson_no: this.state.current_lesson_no + 1,
+                            lesson_running: false
                           })
                         }
                       }
@@ -177,7 +185,7 @@ class App extends React.Component {
               } 
             />
           </div>
-          <DisplayKeyboard pressed_key = {this.state.pressed_key} key_code = {this.pressed_key_code}/>
+          <DisplayKeyboard pressed_key = {this.state.pressed_key} key_code = {this.pressed_key_code} lesson_running = {this.state.lesson_running}/>
         </div>
       );
     }

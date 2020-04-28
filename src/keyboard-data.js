@@ -1,5 +1,5 @@
 const keyboard_data = {
-    "rows": ["num","top","hme","btm","ctrl"],
+    "rows": ["num","top","home","bottom","ctrl"],
     "num": [
             {
                 "normal": "`",
@@ -104,7 +104,7 @@ const keyboard_data = {
                 "shift": "|"
             }
         ],
-    "hme": [
+    "home": [
             {
                 "ctrl": "capslock"
             },
@@ -147,7 +147,7 @@ const keyboard_data = {
             "ctrl": "enter"
             }
         ],
-    "btm": [
+    "bottom": [
             {
             "ctrl": "shift"
             },
