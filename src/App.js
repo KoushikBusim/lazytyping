@@ -3,6 +3,8 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './App.css';
 import key_mappings from './key-mappings';
 import DisplayKeyboard from './DisplayKeyboard';
+import leftrestinghand from './images/leftrestinghand.png';
+import rightrestinghand from './images/right-resting-hand.png';
 
 /**
  * ****** MAINTENANCE HISTORY ******
@@ -99,8 +101,12 @@ class App extends React.Component {
     if(this.state.lesson_running === false){
       return (
         <div className="App">
-          <p><b>Lesson name:</b> {lesson_name}, <span style={{'color':'blue','text-decoration': 'underline','cursor':'pointer'}} onClick={ e => this.clickspan(e)} >start lesson</span>.</p>
+          <p className="title-header"><b>Lesson name:</b> {lesson_name}, <span style={{'color':'blue','text-decoration': 'underline','cursor':'pointer'}} onClick={ e => this.clickspan(e)} >start lesson</span>.</p>
           <DisplayKeyboard lesson_name={lesson_name} pressed_key = {this.state.pressed_key} key_code = {this.pressed_key_code} lesson_running = {this.state.lesson_running}/>
+          {/* <div class="hands js-hands  ">
+            <img class="hand hand--left js-left-hand" src={leftrestinghand}/>
+            <img class="hand hand--right js-right-hand" src={rightrestinghand}/>
+          </div> */}
         </div>);
     }
     // console.log("lesson:",lesson)
@@ -122,7 +128,7 @@ class App extends React.Component {
     else{
       return ( 
         <div className="App">
-          <p><b>Lesson name:</b> {lesson_name}</p>
+          <p className="title-header"><b>Lesson name:</b> {lesson_name}</p>
           <div className="ContentBox">
             {
               lesson.join(" ").split("").map((letter, index) => {
@@ -143,6 +149,7 @@ class App extends React.Component {
               handleKeys={this.state.keys}
               onKeyEvent={
                 (key, e) => {
+                  e.preventDefault();
                   // console.log(`do something upon keydown event of ${key}`);
                   if(key !== "shift"){
                     if(lesson.join(" ").split("")[this.state.current_index] === key_mappings[key]){ // right or wrong check
@@ -186,6 +193,10 @@ class App extends React.Component {
             />
           </div>
           <DisplayKeyboard pressed_key = {this.state.pressed_key} key_code = {this.pressed_key_code} lesson_running = {this.state.lesson_running}/>
+          <div class="hands js-hands  ">
+            <img class="hand hand--left js-left-hand" src={leftrestinghand}/>
+            <img class="hand hand--right js-right-hand" src={rightrestinghand}/>
+          </div>
         </div>
       );
     }

@@ -27,6 +27,7 @@ body{
   border-radius: 10px;
   padding: 40px;
   width: 60%;
+  /* margin-top: 6%; */
   margin-left: 20%;
   margin-right: 20%;
   background-color: #cccccc;
@@ -107,6 +108,14 @@ body{
   }
 }
 
+/* .title-header{
+  position: absolute;
+  z-index: 9999;
+  left: 25%;
+  top: 1%;
+  width: 48%;
+} */
+
 .keyboard {
   /* border: 1px dashed black; */
   border-radius: 10px;
@@ -119,6 +128,22 @@ body{
   display: flex;
   flex-flow: column wrap; /*flex direction, flex wrap */
   font-size: 12px;
+}
+
+.hand {
+  position: absolute;
+}
+
+.hand--left {
+  left: 5.8%;
+  top: 14%;
+  width: 48%;
+}
+
+.hand--right{
+  right: 6.8%;
+  top: 16%;
+  width: 54%;
 }
 
 .keyboard-row{
