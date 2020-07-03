@@ -1,9 +1,10 @@
 body{
-  background-color: white;
+  background-color: black;
 }
 
 .App {
   text-align: center;
+  color: white;
 }
 
 .App-logo {
@@ -30,7 +31,7 @@ body{
   /* margin-top: 6%; */
   margin-left: 20%;
   margin-right: 20%;
-  background-color: #cccccc;
+  background-color: #333333;
 }
 
 .Current{
@@ -50,17 +51,17 @@ body{
 @keyframes blinker{
 
   0% {
-    border-bottom: 3px solid #282c34;
-    background-color: #cccccc;
+    border-bottom: 3px solid #d7d3cb;
+    background-color: #333333;
   }
 
   50% {
-    background-color: #cccccc;
+    background-color: #333333;
   }
 
   100% { 
-    border-bottom: 3px solid #282c34;
-    background-color: #cccccc;
+    border-bottom: 3px solid #d7d3cb;
+    background-color: #333333;
   }
 
 }
@@ -68,18 +69,18 @@ body{
 
 @keyframes blinkcursor {
   0% { 
-    color: white; 
-    background-color: #282c34;
+    color: black; 
+    background-color: #d7d3cb;
   }
 
   50%{
     color: black; 
-    background-color: #cccccc;
+    background-color: #333333;
   }
 
   100% {
-    color: white; 
-    background-color: #282c34;
+    color: black; 
+    background-color: #d7d3cb;
   }
 
 }
@@ -92,7 +93,7 @@ body{
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -124,7 +125,7 @@ body{
   margin-left: 20%;
   margin-top: 2%;
   margin-right: 20%;
-  background-color: #cccccc;
+  background-color: #333333;
   display: flex;
   flex-flow: column wrap; /*flex direction, flex wrap */
   font-size: 12px;
@@ -171,7 +172,7 @@ body{
   flex-basis:30px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 
 .backspace{
@@ -186,7 +187,7 @@ body{
   flex-basis:80px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 
 .tab{
@@ -201,7 +202,7 @@ body{
   flex-basis:40px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 
 .capslock{
@@ -216,7 +217,7 @@ body{
   flex-basis:50px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 .enter{
   box-sizing:border-box;
@@ -230,7 +231,7 @@ body{
   flex-basis:50px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 .shift{
   box-sizing:border-box;
@@ -244,7 +245,7 @@ body{
   flex-basis:60px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 .ctrl{
   box-sizing:border-box;
@@ -258,7 +259,7 @@ body{
   flex-basis:30px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 .fn{
   box-sizing:border-box;
@@ -272,7 +273,7 @@ body{
   flex-basis:30px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 .win{
   box-sizing:border-box;
@@ -286,7 +287,7 @@ body{
   flex-basis:30px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 .alt{
   box-sizing:border-box;
@@ -300,7 +301,7 @@ body{
   flex-basis:30px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 .space{
   box-sizing:border-box;
@@ -314,7 +315,7 @@ body{
   flex-basis:400px;
   margin-right:5px;
   display: inline-block;
-  background-color: white;
+  background-color: black;
 }
 
 .keyname{
@@ -337,18 +338,19 @@ body{
 @keyframes highlightOnce{
 
   0% {
-    border: solid #cccccc;
+    border: solid #333333;
   }
 
   100% {
-    background-color: #cccccc;
-    border: solid #cccccc;
+    background-color: #333333;
+    border: solid #333333;
   }
 
 }
 
 .lessonrow{
-  border: 3px dashed red;
+  border: 3px dashed #e49e13;
+  /* border: 3px dashed red; */
   /* border-radius: 4px; */
 
 }
