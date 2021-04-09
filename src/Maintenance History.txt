@@ -1,0 +1,25 @@
+FINISHED
+--record key strokes, detect which key is pressed
+--keep para a string, split to a character array
+--display each character with span tag
+--span tag has three styles: normal(default), red text color(mistake), blinking(toggle b/w normal and black background)
+--use state object to iterate the character array and check condition update state and move to next char 
+--once a para is finished show the stats
+--blinking, mistake, current, normal styles updated
+--check condition and move to next char working and accordingly update set styles
+--iterated one para. showed stats after the para is finished
+
+
+
+TO DO
+--change codebase to react hooks
+--create a dummy paras for every letter
+--iterate paras.
+--get the hand gesture style to work
+--dynamically generate paras
+--research hosting on github.io pages
+--break into small components
+--light/dark mode switch
+--dynamic keyboard display based on platform
+--design keyboard and hand style
+--anagrams (words based on keys in different rows)

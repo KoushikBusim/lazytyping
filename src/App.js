@@ -22,42 +22,8 @@ import DisplayHands from './DisplayHands'
 
 /**
  * ****** MAINTENANCE HISTORY ******
- * 
- * ######### SYMBOL & MEANING ##############
- * -- TODO FINISHED
- * - TODO
- * --- STATUS 
- * 
- * dark mode switch
- * anagrams (words based on keys in different rows)
- * 
- * --record key strokes, detect which key is pressed
- * 
- * key strokes recorded.
- * --keep para a string, split to a character array
- * --display each character with span tag
- * --span tag has three styles: normal(default), red text color(mistake), blinking(toggle b/w normal and black background)
- * --use state object to iterate the character array and check condition update state and move to next char 
- * 
- * blinking, mistake, current, normal styles updated
- * check condition and move to next char working and accordingly update set styles
- * 
- * -break it into small components
- * -create a dummy paras for every letter
- * -iterate paras.
- * --once a para is finished show the stats
- * -get the hand gesture style to work
- * -dynamically generate paras
- * 
- * iterated one para. showed stats after the para is finished
- * -design keyboard and hand style
- * 
- * -research hosting on github.io pages
- * 2020/05/03
- * -break into small components
- * -night mode
- * -dynamic keyboard display based on platform
- */
+ *  check 'Maintenance History.txt' file
+**/
 
 var lessons = {
   "toprow": ["equity","pietro","portie","pouter","protei","purity","pyrite","quoter","qwerty","torque","troupe","equip","erupt","outer","outre","perot","porty","pyotr","petri","petro"],
