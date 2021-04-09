@@ -168,8 +168,8 @@ body{
   margin: 3px;
   -ms-flex:1;
   flex:1;
-  -ms-flex-preferred-size:40px;
-  flex-basis:30px;
+  -ms-flex-preferred-size:30px;
+  flex-basis:3px;
   margin-right:5px;
   display: inline-block;
   background-color: black;
