@@ -3,51 +3,31 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import './App.css';
 import key_mappings from './key-mappings';
 import DisplayKeyboard from './DisplayKeyboard';
-import leftrestinghand from './images/leftrestinghand.png';
-import rightrestinghand from './images/right-resting-hand.png';
+import DisplayHands from './DisplayHands'
+// import leftrestinghand from './images/leftrestinghand.png';
+// import rightrestinghand from './images/right-resting-hand.png';
+// import leftf from './images/left-home-row-2.png';
+// import rightshift from './images/right-bottom-row-6.png';
+// import qkey from './images/q.webp';
+// import wkey from './images/w.webp';
+// import ekey from './images/e.webp';
+// import rkey from './images/r.webp';
+// import tkey from './images/t.webp';
+// import ykey from './images/y.webp';
+// import ukey from './images/u.webp';
+// import ikey from './images/i.webp';
+// import okey from './images/o.webp';
+// import pkey from './images/p.webp';
+
 
 /**
  * ****** MAINTENANCE HISTORY ******
- * 
- * ######### SYMBOL & MEANING ##############
- * -- TODO FINISHED
- * - TODO
- * --- STATUS 
- * 
- * dark mode switch
- * anagrams (words based on keys in different rows)
- * 
- * --record key strokes, detect which key is pressed
- * 
- * key strokes recorded.
- * --keep para a string, split to a character array
- * --display each character with span tag
- * --span tag has three styles: normal(default), red text color(mistake), blinking(toggle b/w normal and black background)
- * --use state object to iterate the character array and check condition update state and move to next char 
- * 
- * blinking, mistake, current, normal styles updated
- * check condition and move to next char working and accordingly update set styles
- * 
- * -break it into small components
- * -create a dummy paras for every letter
- * -iterate paras.
- * --once a para is finished show the stats
- * -get the hand gesture style to work
- * -dynamically generate paras
- * 
- * iterated one para. showed stats after the para is finished
- * -design keyboard and hand style
- * 
- * -research hosting on github.io pages
- * 
- * -break into small components
- * -night mode
- * -dynamic keyboard display based on platform
- */
+ *  check 'Maintenance History.txt' file
+**/
 
 var lessons = {
-  "homerow": ["flags","flaks","glads","dags","dash","fads","fags","fash","flag","gads","gals","gash","glad","hags","half","jags","lads","lags","lakh","lash","salk","shad","slad","slag"],
   "toprow": ["equity","pietro","portie","pouter","protei","purity","pyrite","quoter","qwerty","torque","troupe","equip","erupt","outer","outre","perot","porty","pyotr","petri","petro"],
+  "homerow": ["flags","flaks","glads","dags","dash","fads","fags","fash","flag","gads","gals","gash","glad","hags","half","jags","lads","lags","lakh","lash","salk","shad","slad","slag"],
   "bottomrow": ["zigzag","zebra","zero","zipper","zinnia","zoo","zithe","zan","zala","zalad","zajar","zaddy","zamono","zakk","zah","zomo","zanby","zabba","zamna","zaxy","zamn"],
   "allrows": ["ine","eletten","lier","eren","letter","lier","nient","rel","teet","letten","inent","ter","tell","treet","ener","ree","ten","lette","ner","nient","tree","ree","nient","tree"]
 }
@@ -70,7 +50,8 @@ class App extends React.Component {
     "finished": false,
     "pressed_key_code": "",
     "current_lesson_no": 0,
-    "lesson_running": false
+    "lesson_running": false,
+    "abc": "leftf"
   }
   getPractiseKeys = () => {
     let practise_keys = []
@@ -102,7 +83,12 @@ class App extends React.Component {
       return (
         <div className="App">
           <p className="title-header"><b>Lesson name:</b> {lesson_name}, <span style={{'color':'blue','text-decoration': 'underline','cursor':'pointer'}} onClick={ e => this.clickspan(e)} >start lesson</span>.</p>
-          <DisplayKeyboard lesson_name={lesson_name} pressed_key = {this.state.pressed_key} key_code = {this.pressed_key_code} lesson_running = {this.state.lesson_running}/>
+          <DisplayKeyboard 
+            lesson_name={lesson_name} 
+            pressed_key = {this.state.pressed_key} 
+            key_code = {this.pressed_key_code} 
+            lesson_running = {this.state.lesson_running}
+          />
           {/* <div class="hands js-hands  ">
             <img class="hand hand--left js-left-hand" src={leftrestinghand}/>
             <img class="hand hand--right js-right-hand" src={rightrestinghand}/>
@@ -193,10 +179,7 @@ class App extends React.Component {
             />
           </div>
           <DisplayKeyboard pressed_key = {this.state.pressed_key} key_code = {this.pressed_key_code} lesson_running = {this.state.lesson_running}/>
-          <div class="hands js-hands  ">
-            <img class="hand hand--left js-left-hand" src={leftrestinghand}/>
-            <img class="hand hand--right js-right-hand" src={rightrestinghand}/>
-          </div>
+          <DisplayHands current_key = {lesson.join(" ").split("")[this.state.current_index]}/>
         </div>
       );
     }
@@ -204,3 +187,10 @@ class App extends React.Component {
 }
  
 export default App;
+
+// hi my name is koushik kumar i wrote this code a longtime ago, may be like 3months, yeah for me 3months is enough to forget stuff
+// you see it was such a nice project but that's my problem i lose interest too soon
+// i get excited about stuff and all of a sudden i lose interest as i find something new interesting or may be i would start
+// a new project.
+
+// Most of the times it's both, i don't know if it is the same with everybody or it's just me fluctuating like this.
